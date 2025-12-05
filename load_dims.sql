@@ -1,6 +1,7 @@
 INSERT INTO `nyc_taxi_datawarehouse.dim_date`
-(pickup_date,pickup_year,pickup_month,pickup_day,pickup_hour,dropoff_date,dropoff_year,dropoff_month,dropoff_day,dropoff_hour)
+(date_key,pickup_date,pickup_year,pickup_month,pickup_day,pickup_hour,dropoff_date,dropoff_year,dropoff_month,dropoff_day,dropoff_hour)
 SELECT
+CAST(FORMAT_DATE('%Y%m%d',DATE(tpep_pickup_datetime)) AS INT64),
 DATE(tpep_pickup_datetime),
 EXTRACT(YEAR FROM tpep_pickup_datetime),
 EXTRACT(MONTH FROM tpep_pickup_datetime),
